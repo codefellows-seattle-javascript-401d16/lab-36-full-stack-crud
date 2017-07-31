@@ -2,4 +2,4 @@
 // load configuration
 require('dotenv').config();
 // start server
-require('./lib/server');
+require('./lib/server.js').start();

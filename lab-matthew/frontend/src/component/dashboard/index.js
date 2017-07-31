@@ -1,54 +1,47 @@
 import React from 'react'
 import {connect} from 'react-redux'
-// import ListForm from '../list-form'
-// import * as util from '../../lib/util.js'
-// import * as listActions from '../../action/list-actions.js'
+import ShipForm from '../ship-form'
+import * as util from '../../lib/util.js'
+import * as shipActions from '../../action/ship-actions.js'
 
 class Dashboard extends React.Component {
 
   componentWillMount(){
-    // this.props.listsFetch()
+    this.props.shipsFetch()
   }
-  
 
   render(){
     return (
-      <h1> test </h1>
+      <div className='dashboard'>
+        <h2> dashboard </h2>
+        <ShipForm
+          buttonText='create ship'
+          onComplete={this.props.shipCreate}
+          />
+
+        {this.props.ships.map(ship =>
+          <div key={ship._id}>
+            {ship.title}
+            <button
+              onClick={() => this.props.shipDelete(ship)}>
+              delete
+            </button>
+          </div>
+        )}
+
+      </div>
     )
   }
 }
 
+let mapStateToProps = (state) => ({ships: state.ships})
+let mapDispatchToProps = (dispatch) => ({
+  shipCreate: (ship) => dispatch(shipActions.shipCreateRequest(ship)),
+  shipDelete: (ship) => dispatch(shipActions.shipDeleteRequest(ship)),
+  shipsFetch: () => dispatch(shipActions.shipsFetchRequest()),
+})
 
-
-
-//
-// <div className='dashboard'>
-//   <h2> dashboard </h2>
-//   <ListForm
-//     buttonText='create list'
-//     onComplete={this.props.listCreate}
-//     />
-//
-//   {this.props.lists.map(list =>
-//     <div key={list._id}>
-//       {list.title}
-//       <button
-//         onClick={() => this.props.listDelete(list)}>
-//         delete
-//       </button>
-//     </div>
-//   )}
-//
-// </div>
-
-
-
-
-// let mapStateToProps = (state) => ({lists: state.lists})
-// let mapDispatchToProps = (dispatch) => ({
-//   listCreate: (list) => dispatch(listActions.listCreateRequest(list)),
-//   listDelete: (list) => dispatch(listActions.listDeleteRequest(list)),
-//   listsFetch: () => dispatch(listActions.listsFetchRequest()),
-// })
-
-export default Dashboard
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard)

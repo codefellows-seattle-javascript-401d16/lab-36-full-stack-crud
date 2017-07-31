@@ -20,7 +20,7 @@ let plugins = [
   new HTMLPlugin({template: `${__dirname}/src/index.html`}),
   new DefinePlugin({
     __DEBUG__: JSON.stringify(!production),
-    __API_URL__: JSON.stringify(process.env.API_URL),
+    __API_URL__: JSON.stringify('http://localhost:3000'),
   }),
 ]
 

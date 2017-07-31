@@ -30,6 +30,7 @@ app.use(require('./error-middleware.js'));
 
 const serverControl = module.exports = {};
 serverControl.start = () => {
+  console.log('__IM NOT SURE WHAT EXACTLY__');
   return new Promise((resolve, reject) => {
     if(!server || !server.isOn){
       server = app.listen(process.env.PORT, () => {
@@ -39,7 +40,7 @@ serverControl.start = () => {
       });
       return;
     }
-    reject();
+    reject(new Error('Server is already running'));
   });
 };
 
