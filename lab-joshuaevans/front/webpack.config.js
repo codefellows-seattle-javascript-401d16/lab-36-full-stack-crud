@@ -12,7 +12,7 @@ const production = process.env.NODE_ENV === 'production'
 
 let plugins = [
   new ExtractPlugin('bundle.[hash].css'),
-  new HTMLPlugin({template: `${__dirname}/src/index.html`),
+  new HTMLPlugin({template: `${__dirname}/src/index.html`}),
   new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
     __DEBUG__: JSON.stringify(!production),
@@ -47,7 +47,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractPLugin.extract(['css-loader', 'sass-loader']),
+        loader: ExtractPlugin.extract(['css-loader', 'sass-loader']),
       },
       {
         test: /\.(png|jpg)$/,
