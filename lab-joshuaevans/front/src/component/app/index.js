@@ -1,4 +1,7 @@
 import React from 'react'
+import {Provider} from 'react-redux'
+import appCreateStore from '../../lib/app-create-store.js'
+import Dashboard from '../dashboard'
 import {BrowserRouter, Router} from 'react-router-dom'
 
 class App extends React.Component {
@@ -7,7 +10,7 @@ class App extends React.Component {
       <div className='app'>
         <BrowserRouter>
           <main>
-            <h1>What Band</h1>
+            <h3>What Band</h3>
           </main>
         </BrowserRouter>
       </div>
