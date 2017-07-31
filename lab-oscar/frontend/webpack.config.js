@@ -1,7 +1,7 @@
 'use strict';
 
 //load environment
-require('dotevn').config();
+// require('dotenv').config();
 
 const HTMLPlugin = require('html-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
