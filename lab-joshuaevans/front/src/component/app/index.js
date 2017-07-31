@@ -7,7 +7,7 @@ class App extends React.Component {
       <div className='app'>
         <BrowserRouter>
           <main>
-            <h1></h1>
+            <h1>What Band</h1>
           </main>
         </BrowserRouter>
       </div>
