@@ -27,30 +27,34 @@ class TeamForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
-          name='name'
-          type='text'
-          placeholder='Team Name'
-          value={this.state.name}
-          onChange={this.handleChange}
-        />
-        <input
           name='city'
           type='text'
           placeholder='City'
           value={this.state.city}
           onChange={this.handleChange}
+          required
         />
         <input
           name='state'
           type='text'
           placeholder='State'
-          maxlength={2}
+          maxLength={2}
           value={this.state.state}
           onChange={this.handleChange}
+          required
         />
-
+        <input
+          name='name'
+          type='text'
+          placeholder='Team Name'
+          value={this.state.name}
+          onChange={this.handleChange}
+          required
+        />
         <button type='submit'>{this.props.buttonText}</button>
       </form>
     );
   }
 }
+
+export default TeamForm;

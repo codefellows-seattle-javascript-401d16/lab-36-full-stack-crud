@@ -20,15 +20,15 @@ export const teamDelete = team => ({
   payload: team,
 });
 
-export const teamFetchRequest = () => (dispatch, getState) =>
-  superagent.get(`${__API_URL__}/api/teams`)
+export const teamsFetchRequest = () => (dispatch, getState) =>
+  superagent.get(`${__API_URL__}/api/nhl/teams`)
     .then(res => {
       dispatch(teamSet(res.body));
       return res;
     });
 
 export const teamCreateRequest = team => (dispatch, getState) =>
-  superagent.post(`${__API_URL__}/api/teams`)
+  superagent.post(`${__API_URL__}/api/nhl/teams`)
     .send(team)
     .then(res => {
       dispatch(teamCreate(res.body));
@@ -36,7 +36,7 @@ export const teamCreateRequest = team => (dispatch, getState) =>
     });
 
 export const teamDeleteRequest = team => (dispatch, getState) =>
-  superagent.delete(`${__API_URL__}/api/teams/${team._id}`)
+  superagent.delete(`${__API_URL__}/api/nhl/teams/${team._id}`)
     .then(res => {
       dispatch(teamDelete(team));
       return res;

@@ -24,7 +24,7 @@ class DashboardContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.props.teamsFetch;
+    this.props.teamsFetch();
   }
 
   render() {
@@ -38,7 +38,7 @@ class DashboardContainer extends React.Component {
 
         {this.props.teams.map(team =>
           <div key={team._id}>
-            {team.city}, {team.state} {team.name}{'\'s'}
+            {team.city}, {team.state} {team.name}
             <button
               onClick={() => this.props.teamDelete(team)}
             >Delete</button>

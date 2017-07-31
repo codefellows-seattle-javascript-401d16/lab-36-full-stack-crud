@@ -16,7 +16,7 @@ let plugins = [
   new HtmlPlugin({ template: `${__dirname}/src/index.html` }),
   new DefinePlugin({
     __DEBUG__: JSON.stringify(!production),
-    __API_URL__: JSON.stringify('localhost:3000/api'),
+    __API_URL__: JSON.stringify('http://localhost:3000'),
   }),
 ];
 
