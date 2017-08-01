@@ -2,6 +2,11 @@ export default (state=[], action) => {
   let {type, payload} = action;
 
   switch (type) {
+
+  //return just the database payload (array or objects) on dash render
+  case 'RESORT_SET':
+    return payload;
+    
   case 'RESORT_CREATE':
     return [payload, ...state];
 
