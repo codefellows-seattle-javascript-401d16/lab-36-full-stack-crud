@@ -5,17 +5,31 @@ class ShopForm extends React.Component {
         super(props)
         this.state = props.shop ? props.shop : {name: '', location: ''}
 
-        this.handleChange = this.handleChange.bind(this)
+        this.handleNameChange = this.handleNameChange.bind(this)
+        this.handleLocationChange = this.handleLocationChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleChange(e) {
-        this.setState({[name]: e.target.value})
+    handleNameChange(e) {
+        this.setState({name: e.target.value})
+    }
+
+    handleLocationChange(e) {
+        this.setState({location: e.target.value})
     }
 
     handleSubmit(e) {
         e.preventDefault()
-
+        let {onComplete} = this.props
+        console.log('handle submit')
+        let result = onComplete(this.state)
+        if(result instanceof Promise){
+            result.then(() => this.setState({error: null}))
+                .catch(error=> {
+                     util.log('ListForm Error:', error)
+                     this.setState({error})
+                 })
+        } 
     }
 
     render() {
@@ -27,14 +41,14 @@ class ShopForm extends React.Component {
                         type='text'
                         placeholder='Name'
                         value={this.state.name}
-                        onChange={this.handleChange}
+                        onChange={this.handleNameChange}
                         />
                     <input
                         name='location'
                         type='text'
                         placeholder='Location'
                         value={this.state.location}
-                        onChange={this.handleChange}
+                        onChange={this.handleLocationChange}
                         />
                     <button type='submit'> {this.props.buttonText} </button>
                 </form>

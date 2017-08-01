@@ -27,7 +27,13 @@ export const shopCreateRequest = (shop) => (dispatch) => {
         })
 }
 
-export const 
+export const shopDeleteRequest = (shop) => (dispatch) => {
+    return superagent.delete(`${__API_URL__}/api/bikeShops/${shop._id}`)
+        .then(res => {
+            dispatch(shopDelete(shop))
+            return res
+        })
+}
 
 export const listDeleteRequest = (list) => (dispatch) => {
   return superagent.delete(`${__API_URL__}/api/lists/${list._id}`)
