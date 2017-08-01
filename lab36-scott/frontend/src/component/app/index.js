@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import appStoreCreate from '../../lib/app-store-create.js';
+import Dashboard from '../dashboard';
 
 const store = appStoreCreate();
 
@@ -11,9 +12,10 @@ class App extends React.Component{
       <div className='app'>
         <Provider store={store}>
           <BrowserRouter>
-            <div className='app'>
-              Dingo
-            </div>
+            <main>
+              App
+              <Route exact path='/' component={Dashboard} />
+            </main>
           </BrowserRouter>
         </Provider>
       </div>
