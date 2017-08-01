@@ -1,23 +1,17 @@
 'use strict'
 
-// load test env
 require('dotenv').config({path: `${__dirname}/../.test.env`})
 
-// npm modules
 const faker = require('faker')
 const expect = require('expect')
 const superagent = require('superagent')
 
-// app modules
 const server = require('../lib/server.js')
 const clearDB = require('./lib/clear-db.js')
 const mockList = require('./lib/mock-list.js');
 
-// module constants
 let tempList;
 const API_URL = process.env.API_URL
-
-// test logic
 
 describe('testing /api/lists', () => {
   before(server.start)
@@ -95,7 +89,7 @@ describe('testing /api/lists', () => {
         })
       })
     })
-    
+
     it('should respond with a an array of 50 list', () => {
       let tempLists
       return mockList.createMany(100)
@@ -111,25 +105,3 @@ describe('testing /api/lists', () => {
     })
   })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

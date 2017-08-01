@@ -1,10 +1,8 @@
 'use strict'
 
-// npm modules
 const jsonParser = require('body-parser').json()
 const taskRouter = module.exports = new require('express').Router()
 
-// app modules
 const Task = require('../model/task.js')
 
 taskRouter.post('/api/tasks', jsonParser, (req, res, next) => {
@@ -27,21 +25,3 @@ taskRouter.put('/api/tasks/:id', jsonParser, (req, res, next) => {
   .then(task => res.json(task))
   .catch(next)
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

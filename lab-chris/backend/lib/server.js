@@ -1,35 +1,25 @@
 'use strict';
 
-// npm modules
 const cors = require('cors')
 const morgan = require('morgan')
 const express = require('express')
 const mongoose = require('mongoose')
 
-// module logic 
-//    * config and connect to monogo
 mongoose.Promise = Promise
 mongoose.connect(process.env.MONGODB_URI)
 
-//    * create app
 const app = express()
 
-//    * load middleware
-app.use(morgan('dev')) // logging util
-app.use(cors())        // enable crosite origin resoruce scripting
+app.use(morgan('dev'))
+app.use(cors())
 
-//    * load routes
 app.use(require('../route/list-router.js'))
 app.use(require('../route/task-router.js'))
 
-// add 404 route
 app.all('/api/*', (req, res, next) => res.sendStatus(404))
 
-
-//    * load error middleware
 app.use(require('./error-middleware.js'))
 
-// export start and stop
 const server = module.exports = {}
 server.isOn = false;
 server.start = () => {
@@ -40,7 +30,7 @@ server.start = () => {
         console.log('server up', process.env.PORT)
         resolve();
       })
-      return 
+      return
     }
     reject(new Error('server allread running'))
   })
@@ -58,4 +48,3 @@ server.stop = () => {
      reject(new Error('ther server is not running'))
    })
 }
-

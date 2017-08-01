@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
         <ListForm
           buttonText='create list'
           onComplete={this.props.listCreate}
-          />
+        />
 
         {this.props.lists.map(list =>
           <div key={list._id}>

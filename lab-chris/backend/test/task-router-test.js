@@ -1,20 +1,16 @@
 'use strict';
 
-// load env
 require('dotenv').config({path: `${__dirname}/../.test.env`})
 
-// npm modules
 const expect = require('expect')
 const superagent = require('superagent')
 
-// app modules
 const clearDB = require('./lib/clear-db')
 const server = require('../lib/server.js')
 const List = require('../model/list.js');
 const mockList = require('./lib/mock-list.js')
 const mockTask = require('./lib/mock-task.js')
 
-// module logic
 const API_URL = process.env.API_URL
 
 describe('testing /api/tasks', () => {
@@ -25,13 +21,13 @@ describe('testing /api/tasks', () => {
   describe('testing POST /api/tasks', () => {
     it('should create a task', () => {
       let tempList
-      let tempTask 
+      let tempTask
       return mockList.createOne()
       .then(list => {
         tempList = list
         return superagent.post(`${API_URL}/api/tasks`)
         .send({
-          content: 'hello world', 
+          content: 'hello world',
           list: list._id.toString(),
         })
       })
@@ -44,7 +40,7 @@ describe('testing /api/tasks', () => {
         return List.findById(tempList._id)
       })
       .then(list => {
-        expect(list.tasks.length).toEqual(1) 
+        expect(list.tasks.length).toEqual(1)
         expect(list.tasks[0].toString()).toEqual(tempTask._id.toString())
       })
     })
@@ -52,7 +48,7 @@ describe('testing /api/tasks', () => {
     it('should respond with a 400 for having a bad list id ', () => {
       return superagent.post(`${API_URL}/api/tasks`)
       .send({
-        content: 'hello world', 
+        content: 'hello world',
         list: '595548f2d8e2edfd4f2ecc24',
       })
       .then(res => {throw res})
@@ -80,30 +76,10 @@ describe('testing /api/tasks', () => {
         return List.findById(tempList._id)
       })
       .then(list => {
-        expect(list.tasks.length).toEqual(1) 
+        expect(list.tasks.length).toEqual(1)
         expect(list.tasks[0].toString()).toEqual(tempTask._id.toString())
       })
     })
   })
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
