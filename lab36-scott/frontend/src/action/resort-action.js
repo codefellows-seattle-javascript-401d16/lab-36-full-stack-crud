@@ -25,7 +25,7 @@ export const resortSet = (resorts) => ({
 
 //these actions talk to the database API. They are ASYNC
 export const resortCreateRequest = (resort) => (dispatch) => {
-  return superagent.post(`${__API_URL__}/api/resorts`)
+  return superagent.post(`http://localhost:3000/api/resorts`)
     .send(resort)
     .then(res => {
       dispatch(resortCreate(res.body));
