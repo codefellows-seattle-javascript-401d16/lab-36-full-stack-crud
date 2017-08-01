@@ -8,8 +8,11 @@ class Dashboard extends React.Component{
     return(
       <div className='dashboard'>
       yo from Dash
-        <ResortForm />
-        
+        <ResortForm
+          buttonText='Create Resort'
+          onComplete={this.props.resortCreate}
+        />
+
       </div>
     );
   }
