@@ -1,20 +1,22 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import Provider from 'react-redux';
+import {Provider} from 'react-redux';
 import appStoreCreate from '../../lib/app-store-create.js';
 
-let store = appStoreCreate();
+const store = appStoreCreate();
 
 class App extends React.Component{
   render(){
     return(
-      <Provider store={store}>
-        <BrowserRouter>
-          <div className='app'>
-            Dingo
-          </div>
-        </BrowserRouter>
-      </Provider>
+      <div className='app'>
+        <Provider store={store}>
+          <BrowserRouter>
+            <div className='app'>
+              Dingo
+            </div>
+          </BrowserRouter>
+        </Provider>
+      </div>
     );
   }
 }

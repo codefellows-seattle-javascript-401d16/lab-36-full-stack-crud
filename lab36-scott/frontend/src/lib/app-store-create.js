@@ -1,7 +1,7 @@
-import reducer from '../reducer';
+import reducer from '../reducer/combine-reducers.js';
 import {createStore, applyMiddleware} from 'redux';
-import reporter from './redux-reporter.js';
+import reduxReporter from './redux-reporter.js';
 
-let appStoreCreate = () => createStore(reducer, applyMiddleware(reporter));
+let appStoreCreate = () => createStore(reducer, applyMiddleware(reduxReporter));
 
 export default appStoreCreate;
