@@ -23,7 +23,7 @@ export const listDelete = (list) => ({
 })
 
 // async actions
-// talk to the API 
+// talk to the API
 export const listsFetchRequest = () => (dispatch) => {
   return superagent.get(`${__API_URL__}/api/lists`)
   .then(res => {
@@ -48,5 +48,3 @@ export const listDeleteRequest = (list) => (dispatch) => {
     return res
   })
 }
-
-
