@@ -22,10 +22,14 @@ class Dashboard extends React.Component {
           <div key={team._id}>
             {team.name}
             <button
-              onClick={() => this.props.listDelete(team)}
+              onClick={() => this.props.teamDelete(team)}
             >
               Delete Team
             </button>
+            <TeamForm
+              buttonText='Update Team'
+              onComplete={this.props.teamUpdate}
+            />
           </div>
         )}
 
@@ -40,6 +44,7 @@ let mapStateToProps = (state) => ({
 
 let mapDispatchToProps = (dispatch) => ({
   teamCreate: (team) => dispatch(teamActions.teamCreateRequest(team)),
+  teamDelete: (team) => dispatch(teamActions.teamDeleteRequest(team)),
   teamsFetch: () => dispatch(teamActions.teamsFetchRequest()),
 });
 

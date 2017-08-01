@@ -8,6 +8,9 @@ export default (state=[], action) => {
     return payload;
   case 'TEAM_CREATE':
     return [payload, ...state];
+  case 'TEAM_DELETE':
+    return state.filter(item =>
+      item._id !== payload._id);
   default:
     return state;
   }
