@@ -17,6 +17,11 @@ export const teamDelete = (team) => ({
   payload: team,
 });
 
+export const teamUpdate = (team) => ({
+  type: 'TEAM_UPDATE',
+  payload: team,
+})
+
 //async actions
 //talk to the API_URL
 export const teamsFetchRequest = () => (dispatch) => {
@@ -40,6 +45,13 @@ export const teamDeleteRequest = (team) => (dispatch) => {
   return superagent.delete(`${__API_URL__}/api/teams/${team._id}`)
     .then(res => {
       dispatch(teamDelete(team));
+      return res;
+    });
+};
+export const teamUpdateRequest = (team) => (dispatch) => {
+  return superagent.put(`${__API_URL__}/api/teams/${team._id}`)
+    .then(res => {
+      dispatch(teamUpdate(team));
       return res;
     });
 };

@@ -1,4 +1,6 @@
 import React from 'react';
+// import TeamList from '../team-list';
+import './_team-list.scss';
 import {connect} from 'react-redux';
 import TeamForm from '../team-form';
 import * as util from '../../lib/util.js';
@@ -20,15 +22,28 @@ class Dashboard extends React.Component {
 
         {this.props.teams.map(team =>
           <div key={team._id}>
-            {team.name}
-            <button
-              onClick={() => this.props.teamDelete(team)}
-            >
-              Delete Team
-            </button>
+            <div className='team-header'>
+              <img className='team-logo' src='somesrcfornow'/>
+              <h4 className='team-name'>
+                {team.name}
+              </h4>
+              <h5 className='founded-title'>Founded on: </h5>
+              <h6 className='team-founded'>
+                {team.founded}
+              </h6>
+              <button
+                onClick={() => this.props.teamDelete(team)}
+              >
+                  Delete Team
+              </button>
+
+            </div>
             <TeamForm
               buttonText='Update Team'
-              onComplete={this.props.teamUpdate}
+              team={team}
+              onComplete={(data) => {
+                data._id = team._id;
+                this.props.teamUpdate(data);}}
             />
           </div>
         )}
@@ -45,6 +60,7 @@ let mapStateToProps = (state) => ({
 let mapDispatchToProps = (dispatch) => ({
   teamCreate: (team) => dispatch(teamActions.teamCreateRequest(team)),
   teamDelete: (team) => dispatch(teamActions.teamDeleteRequest(team)),
+  teamUpdate: (team) => dispatch(teamActions.teamUpdateRequest(team)),
   teamsFetch: () => dispatch(teamActions.teamsFetchRequest()),
 });
 
