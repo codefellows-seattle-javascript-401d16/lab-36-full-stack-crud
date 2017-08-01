@@ -3,7 +3,7 @@ import superagent from 'superagent';
 //sync actions
 //talk to the redux store
 export const teamSet = (teams) => ({
-  type: 'LIST_SET',
+  type: 'TEAM_SET',
   payload: teams,
 });
 

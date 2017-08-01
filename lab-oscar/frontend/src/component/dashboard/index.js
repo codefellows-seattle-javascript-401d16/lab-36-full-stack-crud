@@ -17,6 +17,18 @@ class Dashboard extends React.Component {
           buttonText='create list'
           onComplete={this.props.teamCreate}
         />
+
+        {this.props.teams.map(team =>
+          <div key={team._id}>
+            {team.name}
+            <button
+              onClick={() => this.props.listDelete(team)}
+            >
+              Delete Team
+            </button>
+          </div>
+        )}
+
       </div>
     );
   }
