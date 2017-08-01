@@ -13,7 +13,6 @@ class Dashboard extends React.Component {
   render(){
     return (
       <div className='dashboard'>
-        <h2> dashboard </h2>
         <ListForm
           buttonText='create list'
           onComplete={this.props.listCreate}
