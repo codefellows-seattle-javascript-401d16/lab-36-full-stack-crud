@@ -16,7 +16,7 @@ export default (state = [], action) => {
     return payload;
   case 'TEAM_CREATE':
     validateTeam(payload);
-    return [payload, ...state];
+    return [...state, payload];
   case 'TEAM_UPDATE':
     validateTeam(payload);
     return state.map(team =>
