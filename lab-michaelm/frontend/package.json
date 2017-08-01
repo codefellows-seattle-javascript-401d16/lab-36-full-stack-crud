@@ -1,8 +1,16 @@
 {
-  "name": "frontend",
+  "name": "teams",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|sass|scss|mp3|mov|mp4|wat|jpg|jpeg|gif|png|svg|tiff)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "globals": {
+      "__DEBUG__": false
+    }
+  },
   "scripts": {
     "lint": "eslint .",
     "test": "jest --coverage",

@@ -1,8 +1,12 @@
 let validateLeader = (payload) => {
   if(!payload._id)
     throw new Error('VALIDATION ERROR: leader must have _id');
-  if(!payload.firstName || !payload.lastName || !payload.userName)
-    throw new Error('VALIDATION ERROR: leader must have firstName, lastName, and userName');
+  if(!payload.firstName)
+    throw new Error('VALIDATION ERROR: leader must have firstName');
+  if(!payload.lastName)
+    throw new Error('VALIDATION ERROR: leader must have lastName');
+  if(!payload.userName)
+    throw new Error('VALIDATION ERROR: leader must have userName');
 };
 
 // reducer is only for fontend state

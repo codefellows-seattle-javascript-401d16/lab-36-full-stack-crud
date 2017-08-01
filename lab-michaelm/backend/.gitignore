@@ -9,6 +9,8 @@
 *.pdb
 *.sql
 *.sqlite3
+db
+db/*
 
 ### Linux ###
 *~

@@ -29,7 +29,7 @@ class LeaderForm extends React.Component {
   }
 
   handleChange(e){
-    this.setState({firstName: e.target.value});
+    this.setState({[e.target.name]: e.target.value});
   }
 
   render(){
@@ -42,10 +42,24 @@ class LeaderForm extends React.Component {
         })}>
 
         <input
+          name='userName'
+          type='text'
+          placeholder='userName'
+          value={this.state.userName}
+          onChange={this.handleChange}
+        />
+        <input
           name='firstName'
           type='text'
           placeholder='firstName'
           value={this.state.firstName}
+          onChange={this.handleChange}
+        />
+        <input
+          name='lastName'
+          type='text'
+          placeholder='lastName'
+          value={this.state.lastName}
           onChange={this.handleChange}
         />
 
