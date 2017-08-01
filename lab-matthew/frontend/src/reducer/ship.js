@@ -14,7 +14,6 @@ export default (state=[], action) => {
     return payload
   case 'SHIP_CREATE':
     validateShip(payload)
-    console.log('Ship Reducer Payload', payload);
     return [payload, ...state]
   case 'SHIP_UPDATE':
     validateShip(payload)

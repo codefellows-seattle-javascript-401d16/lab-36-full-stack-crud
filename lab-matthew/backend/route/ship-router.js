@@ -25,8 +25,8 @@ shipRouter.get('/api/ships', (req, res, next) => {
   console.log('hit GET /api/ships');
   Ship.find({})
   .then(ships => res.json(ships))
-  .catch(next)
-})
+  .catch(next);
+});
 
 
 shipRouter.put('/api/ships/:id', jsonParser, (req, res, next) => {

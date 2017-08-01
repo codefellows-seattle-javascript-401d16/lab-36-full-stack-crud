@@ -44,7 +44,7 @@ class ShipForm extends React.Component {
         <input
           name='name'
           type='text'
-          placeholder='name'
+          placeholder='ship name'
           value={this.state.name}
           onChange={this.handleChange}
           />
@@ -52,7 +52,7 @@ class ShipForm extends React.Component {
         <input
           name='type'
           type='text'
-          placeholder='type'
+          placeholder='ship type'
           value={this.state.type}
           onChange={this.handleChange}
           />
@@ -60,12 +60,10 @@ class ShipForm extends React.Component {
         <input
           name='captain'
           type='text'
-          placeholder='captain'
+          placeholder='captain name'
           value={this.state.captain}
           onChange={this.handleChange}
           />
-
-
 
         <button type='submit'> {this.props.buttonText} </button>
       </form>

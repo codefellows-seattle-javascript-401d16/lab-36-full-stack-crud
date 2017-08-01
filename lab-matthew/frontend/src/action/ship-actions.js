@@ -33,6 +33,7 @@ export const shipsFetchRequest = () => (dispatch) => {
 }
 
 export const shipCreateRequest = (ship) => (dispatch) => {
+  console.log('CREATE REQUEST', ship)
   return superagent.post(`${__API_URL__}/api/ships`)
   .send(ship)
   .then(res => {
@@ -41,7 +42,17 @@ export const shipCreateRequest = (ship) => (dispatch) => {
   })
 }
 
+export const shipUpdateRequest = (ship) => (dispatch) => {
+  console.log('UPDATE REQUEST', ship)
+  return superagent.put(`${__API_URL__}/api/ships/${ship._id}`)
+  .then(res => {
+    dispatch(shipUpdate(ship))
+    return res
+  })
+}
+
 export const shipDeleteRequest = (ship) => (dispatch) => {
+  console.log('DELETE REQUEST', ship)
   return superagent.delete(`${__API_URL__}/api/ships/${ship._id}`)
   .then(res => {
     dispatch(shipDelete(ship))
