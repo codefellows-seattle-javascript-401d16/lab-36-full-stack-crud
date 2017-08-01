@@ -22,7 +22,13 @@ class Dashboard extends React.Component{
           {this.props.resorts.map(resort => {
             return <div key={resort._id} className='resort'>
               <h3>{resort.name}</h3>
+              <h6>{resort._id}</h6>
               <button onClick={() => this.props.resortDestroy(resort)} type="submit">Delete Resort</button>
+              <ResortForm
+                buttonText='Update Resort'
+                onComplete={this.props.resortUpdate}
+                resort={resort}
+              />
             </div>;
           })}
 
@@ -36,7 +42,8 @@ let mapStateToProps = (state) => ({resorts: state.resorts});
 
 let mapDispatchToProps = (dispatch) => ({
   resortCreate: (resort) => dispatch(resortActions.resortCreateRequest(resort)),
-  resortDestroy: (resort) => dispatch(resortActions.resortDestroy(resort)),
+  resortUpdate: (resort) => dispatch(resortActions.resortUpdateRequest(resort)),
+  resortDestroy: (resort) => dispatch(resortActions.resortDestroyRequest(resort)),
   resortFetchAll: () => dispatch(resortActions.resortFetchAllRequest()),
 });
 

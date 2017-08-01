@@ -6,13 +6,13 @@ export default (state=[], action) => {
   //return just the database payload (array or objects) on dash render
   case 'RESORT_SET':
     return payload;
-    
+
   case 'RESORT_CREATE':
     return [payload, ...state];
 
   case 'RESORT_UPDATE':
     return state.map(resort => {
-      return resort._id === payload._id ? resort : payload;
+      return resort._id === payload._id ? payload : resort;
     });
 
   case 'RESORT_DESTROY':

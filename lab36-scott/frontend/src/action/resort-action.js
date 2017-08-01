@@ -34,10 +34,27 @@ export const resortCreateRequest = (resort) => (dispatch) => {
 
 //to retrieve everything in the database.
 export const resortFetchAllRequest = () => (dispatch) => {
-  console.log('hit fetchall');
   return superagent.get(`${__API_URL__}/api/resorts`)
     .then(res => {
       dispatch(resortSet(res.body));
+      return res;
+    });
+};
+
+//to update a resort via PUT request
+export const resortUpdateRequest = (resort) => (dispatch) => {
+  return superagent.put(`${__API_URL__}/api/resorts/${resort._id}`)
+    .send(resort)
+    .then(res => {
+      dispatch(resortUpdate(res.body));
+      return res;
+    });
+};
+
+export const resortDestroyRequest = (resort) => (dispatch) => {
+  return superagent.delete(`${__API_URL__}/api/resorts/${resort._id}`)
+    .then(res => {
+      dispatch(resortDestroy(resort));
       return res;
     });
 };
