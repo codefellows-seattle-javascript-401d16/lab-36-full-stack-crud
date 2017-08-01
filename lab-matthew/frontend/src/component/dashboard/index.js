@@ -21,7 +21,9 @@ class Dashboard extends React.Component {
 
         {this.props.ships.map(ship =>
           <div key={ship._id}>
-            {ship.title}
+            {ship.name}
+            {ship.captain}
+            {ship.type}
             <button
               onClick={() => this.props.shipDelete(ship)}>
               delete

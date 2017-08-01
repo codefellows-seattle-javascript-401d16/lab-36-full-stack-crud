@@ -16,11 +16,18 @@ shipRouter.post('/api/ships', jsonParser, (req, res, next) => {
 
 shipRouter.get('/api/ships:id', (req, res, next) => {
   console.log('hit GET /api/ships/:id');
-
   Ship.findById(req.params.id)
   .then(ship => res.json(ship))
   .catch(next);
 });
+
+shipRouter.get('/api/ships', (req, res, next) => {
+  console.log('hit GET /api/ships');
+  Ship.find({})
+  .then(ships => res.json(ships))
+  .catch(next)
+})
+
 
 shipRouter.put('/api/ships/:id', jsonParser, (req, res, next) => {
   console.log('PUT ROUTE', typeof req.body.name);

@@ -1,8 +1,8 @@
 let validateShip = (payload) => {
   if(!payload._id)
     throw new Error('VALIDATION ERROR: ship must have _id')
-  if(!payload.title)
-    throw new Error('VALIDATION ERROR: ship must have title')
+  if(!payload.name)
+    throw new Error('VALIDATION ERROR: ship must have name')
 }
 
 // reducer is only for fontend state
@@ -14,6 +14,7 @@ export default (state=[], action) => {
     return payload
   case 'SHIP_CREATE':
     validateShip(payload)
+    console.log('Ship Reducer Payload', payload);
     return [payload, ...state]
   case 'SHIP_UPDATE':
     validateShip(payload)
