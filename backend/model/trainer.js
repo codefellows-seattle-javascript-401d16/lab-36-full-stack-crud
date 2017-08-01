@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 const trainerSchema = mongoose.Schema({
-  name: {type: String, required: true, unique: true},
+  title: {type: String, required: true},
   plan: [{type: mongoose.Schema.Types.ObjectId, ref: 'plan'}],
 });
 

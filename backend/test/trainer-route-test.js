@@ -20,13 +20,13 @@ describe('Testing resource requests', () => {
   afterEach(clearTrainer);
 
   describe('Testing POST requests', () => {
-    let trainerData = {name: faker.name.title()};
+    let trainerData = {title: faker.name.title()};
     it('Should post data and return a 200 status', () => {
       return superagent.post(`${API_URL}/api/trainers`)
       .send(trainerData)
       .then(res => {
         expect(res.status).toEqual(200);
-        expect(res.body.name).toEqual(trainerData.name);
+        expect(res.body.title).toEqual(trainerData.title);
         expect(res.body.plan).toEqual([]);
         expect(res.body._id).toExist();
       });
@@ -61,7 +61,7 @@ describe('Testing resource requests', () => {
       })
       .then(res => {
         expect(res.status).toEqual(200);
-        expect(res.body.name).toEqual(tempTrainer.name);
+        expect(res.body.title).toEqual(tempTrainer.title);
         expect(res.body._id).toExist();
         expect(res.body.plan).toEqual([]);
       });
@@ -80,7 +80,7 @@ describe('Testing resource requests', () => {
   });
   describe('Testing PUT requests', () => {
     it('should update db and return 200 status', () => {
-      let trainerData = {name: faker.name.title()};
+      let trainerData = {title: faker.name.title()};
       let tempTrainer;
       return mockTrainer.createOne()
       .then(trainer => {
@@ -90,13 +90,13 @@ describe('Testing resource requests', () => {
       })
       .then(res => {
         expect(res.status).toEqual(200);
-        expect(res.body.name).toEqual(tempTrainer.name);
+        expect(res.body.title).toEqual(tempTrainer.title);
         expect(res.body._id).toExist();
         expect(res.body.plan).toEqual([]);
       });
     });
     it('should attempt to update db and return 404 status', () => {
-      let trainerData = {name: faker.name.title()};
+      let trainerData = {title: faker.name.title()};
       let tempTrainer;
       return mockTrainer.createOne()
       .then(trainer => {

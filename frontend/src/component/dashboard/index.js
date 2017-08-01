@@ -1,30 +1,30 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import ListForm from '../list-form'
+import TrainerForm from '../trainer-form'
 import * as util from '../../lib/util.js'
-import * as listActions from '../../action/list-actions.js'
+import * as trainerActions from '../../action/trainer-actions.js'
 
 class Dashboard extends React.Component {
 
   componentWillMount(){
-    this.props.listsFetch()
+    this.props.trainersFetch()
   }
 
   render(){
     return (
       <div className='dashboard'>
         <h2> dashboard </h2>
-        <ListForm 
-          buttonText='create list'
-          onComplete={this.props.listCreate}
-          />
-        
-        {this.props.lists.map(list => 
-          <div key={list._id}>
-            {list.title} 
+        <TrainerForm
+          buttonText='create trainer'
+          onComplete={this.props.trainerCreate}
+        />
+
+        {this.props.trainers.map(trainer =>
+          <div key={trainer._id}>
+            {trainer.title}
             <button
-              onClick={() => this.props.listDelete(list)}>
-              delete 
+              onClick={() => this.props.trainerDelete(trainer)}>
+              delete
             </button>
           </div>
         )}
@@ -34,16 +34,14 @@ class Dashboard extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => ({lists: state.lists})
+let mapStateToProps = (state) => ({trainers: state.trainers})
 let mapDispatchToProps = (dispatch) => ({
-  listCreate: (list) => dispatch(listActions.listCreateRequest(list)),
-  listDelete: (list) => dispatch(listActions.listDeleteRequest(list)),
-  listsFetch: () => dispatch(listActions.listsFetchRequest()),
+  trainerCreate: (trainer) => dispatch(trainerActions.trainerCreateRequest(trainer)),
+  trainerDelete: (trainer) => dispatch(trainerActions.trainerDeleteRequest(trainer)),
+  trainersFetch: () => dispatch(trainerActions.trainersFetchRequest()),
 })
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Dashboard)
-
-

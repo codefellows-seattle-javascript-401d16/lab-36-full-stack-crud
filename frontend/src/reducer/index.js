@@ -1,4 +1,4 @@
 import {combineReducers} from 'redux'
-import lists from './list.js'
+import trainers from './trainer.js'
 
-export default combineReducers({ lists })
+export default combineReducers({ trainers })

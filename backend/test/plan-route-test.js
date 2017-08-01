@@ -119,7 +119,7 @@ describe('Testing resource requests', () => {
       });
     });
     it('should attempt to update db and return 404 status', () => {
-      let planData = {name: faker.name.title()};
+      let planData = {title: faker.name.title()};
       let tempPlan;
       return mockPlan.createOne()
       .then(plan => {
