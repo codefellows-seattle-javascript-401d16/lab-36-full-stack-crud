@@ -42,6 +42,10 @@ class DashboardContainer extends React.Component {
             <button
               onClick={() => this.props.teamDelete(team)}
             >Delete</button>
+            <TeamForm
+              buttonText='Update'
+              onComplete={this.props.teamUpdate}
+            />
           </div>
         )}
       </main>

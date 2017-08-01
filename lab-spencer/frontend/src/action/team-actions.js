@@ -35,6 +35,14 @@ export const teamCreateRequest = team => (dispatch, getState) =>
       return res;
     });
 
+export const teamUpdateRequest = team => (dispatch, getState) =>
+  superagent.put(`${__API_URL__}/api/nhl/teams`)
+    .send(team)
+    .then(res => {
+      dispatch(teamUpdate(res.body));
+      return res;
+    });
+
 export const teamDeleteRequest = team => (dispatch, getState) =>
   superagent.delete(`${__API_URL__}/api/nhl/teams/${team._id}`)
     .then(res => {
