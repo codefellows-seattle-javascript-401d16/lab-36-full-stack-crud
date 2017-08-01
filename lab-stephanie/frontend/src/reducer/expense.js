@@ -1,4 +1,4 @@
-let initialState = {}
+let initialState = []
 
 let validatePayload = payload => {
   if (!payload.id || !payload.name || !payload.price || !payload.timestamp)

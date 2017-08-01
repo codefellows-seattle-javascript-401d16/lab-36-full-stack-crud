@@ -13,7 +13,11 @@ import CategoryForm from '../category-form-component'
 import CategoryItem from '../category-item-component'
 
 class DashboardContainer extends React.Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+  componentWillMount() {
     this.props.categoryCreate({ name: 'Food', budget: 500 })
     this.props.categoryCreate({ name: 'Car', budget: 500 })
     this.props.categoryCreate({ name: 'Bills', budget: 500 })
@@ -25,6 +29,7 @@ class DashboardContainer extends React.Component {
       <main className="dashboard-container">
         <h2> Budget Tracker </h2>
         <CategoryForm categoryCreate={this.props.categoryCreate} />
+        {console.log('this.props.categories', this.props)}
         <ul>
           {this.props.categories.map((item, i) => {
             return (
