@@ -17,7 +17,6 @@ class LeaderForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     let {onComplete} = this.props;
-    console.log('booyea');
     let result = onComplete(this.state);
     if(result instanceof Promise){
       result.then(() => this.setState({error: null}))

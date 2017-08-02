@@ -10,23 +10,12 @@ class Dashboard extends React.Component {
     this.state={
       editing: false,
     };
-    this.componentWillMount = this.componentWillMount.bind(this);
-    this.handleLeaderUpdate = this.handleLeaderUpdate.bind(this);
-  }
-
-  componentWillMount(){
-    this.props.leadersFetch();
-  }
-
-  handleLeaderUpdate(leader){
-    this.props.leaderUpdate(leader);
-    this.setState({editing:false});
   }
 
   render(){
     return (
       <div className='dashboard'>
-        <h2> dashboard </h2>
+        <h2> Leader </h2>
         <LeaderForm
           buttonText='Create Leader'
           onComplete={this.props.leaderCreate}
@@ -53,7 +42,10 @@ class Dashboard extends React.Component {
                 </ul>
                 <LeaderForm
                   buttonText='Update Leader'
-                  onComplete={this.handleLeaderUpdate}
+                  onComplete={(state) => {
+                    state._id = leader._id;
+                    this.props.leaderUpdate(state);
+                  }}
                 />
                 <button
                   onClick={() => this.setState({editing:false})}>
@@ -73,7 +65,6 @@ let mapDispatchToProps = (dispatch) => ({
   leaderCreate: (leader) => dispatch(leaderActions.leaderCreateRequest(leader)),
   leaderDelete: (leader) => dispatch(leaderActions.leaderDeleteRequest(leader)),
   leaderUpdate: (leader) => dispatch(leaderActions.leaderUpdateRequest(leader)),
-  leadersFetch: () => dispatch(leaderActions.leadersFetchRequest()),
 });
 
 export default connect(
