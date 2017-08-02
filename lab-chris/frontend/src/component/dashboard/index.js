@@ -21,6 +21,12 @@ class Dashboard extends React.Component {
         {this.props.lists.map(list =>
           <div key={list._id}>
             {list.title}
+            <ListForm
+              buttonText='update list'
+              onComplete={(item) => {
+                item._id = list._id
+                this.props.listUpdate(item)}}
+            />
             <button
               onClick={() => this.props.listDelete(list)}>
               delete
@@ -36,6 +42,7 @@ class Dashboard extends React.Component {
 let mapStateToProps = (state) => ({lists: state.lists})
 let mapDispatchToProps = (dispatch) => ({
   listCreate: (list) => dispatch(listActions.listCreateRequest(list)),
+  listUpdate: (list) => dispatch(listActions.listUpdateRequest(list)),
   listDelete: (list) => dispatch(listActions.listDeleteRequest(list)),
   listsFetch: () => dispatch(listActions.listsFetchRequest()),
 })
