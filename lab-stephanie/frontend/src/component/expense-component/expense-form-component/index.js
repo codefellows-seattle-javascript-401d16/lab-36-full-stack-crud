@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-import { expenseCreate } from '../../../action/expense-actions.js'
+import * as categoryActions from '../../../action/category-actions.js'
+import * as expenseActions from '../../../action/expense-actions.js'
 
 class ExpenseForm extends React.Component {
   constructor(props) {
@@ -61,7 +61,22 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, getState) => {
   return {
     expenseCreate: expense => {
-      dispatch(expenseCreate(expense))
+      dispatch(expenseActions.expenseCreateRequest(expense))
+    },
+    expenseUpdate: expense => {
+      dispatch(expenseActions.expenseUpdateRequest(expense))
+    },
+    expenseDelete: expense => {
+      dispatch(expenseActions.expenseDeleteRequest(expense))
+    },
+    expenseInsert: expense => {
+      dispatch(expenseActions.expenseInsertRequest(expense))
+    },
+    categoryUpdate: category => {
+      dispatch(categoryActions.categoryUpdateRequest(category))
+    },
+    categoryDelete: category => {
+      dispatch(categoryActions.categoryDeleteRequest(category))
     },
   }
 }

@@ -1,13 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Draggable from '../../draggable'
-
-import {
-  expenseCreate,
-  expenseUpdate,
-  expenseDelete,
-  expenseInsert,
-} from '../../../action/expense-actions.js'
+import * as categoryActions from '../../../action/category-actions.js'
+import * as expenseActions from '../../../action/expense-actions.js'
 
 let renderIf = (t, c) => (t ? c : undefined)
 class ExpenseItem extends React.Component {
@@ -103,16 +98,22 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, getState) => {
   return {
     expenseCreate: expense => {
-      dispatch(expenseCreate(expense))
+      dispatch(expenseActions.expenseCreateRequest(expense))
     },
     expenseUpdate: expense => {
-      dispatch(expenseUpdate(expense))
+      dispatch(expenseActions.expenseUpdateRequest(expense))
     },
     expenseDelete: expense => {
-      dispatch(expenseDelete(expense))
+      dispatch(expenseActions.expenseDeleteRequest(expense))
     },
     expenseInsert: expense => {
-      dispatch(expenseInsert(expense))
+      dispatch(expenseActions.expenseInsert(expense))
+    },
+    categoryUpdate: category => {
+      dispatch(categoryActions.categoryUpdateRequest(category))
+    },
+    categoryDelete: category => {
+      dispatch(categoryActions.categoryDeleteRequest(category))
     },
   }
 }

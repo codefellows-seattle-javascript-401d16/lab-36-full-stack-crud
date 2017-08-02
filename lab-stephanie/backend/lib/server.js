@@ -13,8 +13,8 @@ const app = express();
 app.use(morgan('dev'));
 app.use(cors());
 
-app.use(require('../route/album-router.js'));
-app.use(require('../route/photo-router.js'));
+app.use(require('../route/category-router.js'));
+app.use(require('../route/expense-router.js'));
 
 app.all('/api/*', (req, res, next) => {
   res.sendStatus(404);

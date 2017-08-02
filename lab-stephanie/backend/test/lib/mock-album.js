@@ -1,21 +1,24 @@
 'use strict';
 
+const uuid = require('uuid/v1');
 const faker = require('faker');
-const PhotoAlbum = require('../../model/album.js');
+const ExpenseCategory = require('../../model/category.js');
 
-const mockPhotoAlbum = (module.exports = {});
+const mockExpenseCategory = (module.exports = {});
 
-mockPhotoAlbum.createOne = () => {
-  return new PhotoAlbum({
-    userName: faker.random.word(1),
-    albumName: faker.random.word(1),
-    pictures: faker.random.image(3)
+mockExpenseCategory.createOne = () => {
+  return new ExpenseCategory({
+    categoryId: uuid(),
+    id: uuid(),
+    name: faker.random.word(1),
+    budget: 500,
+    timeStamp: Date.now()
   }).save();
 };
 
-mockPhotoAlbum.createMany = n => {
-  let mockPhotoAlbumArray = new Array(n)
+mockExpenseCategory.createMany = n => {
+  let mockExpenseCategoryArray = new Array(n)
     .fill(0)
-    .map(() => mockPhotoAlbum.createOne());
-  return Promise.all(mockPhotoAlbumArray);
+    .map(() => mockExpenseCategory.createOne());
+  return Promise.all(mockExpenseCategoryArray);
 };

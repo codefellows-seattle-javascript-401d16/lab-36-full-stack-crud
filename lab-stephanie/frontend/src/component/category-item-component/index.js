@@ -3,18 +3,8 @@ import { connect } from 'react-redux'
 import ExpenseForm from '../expense-component/expense-form-component'
 import ExpenseItem from '../expense-component/expense-item-component'
 import Dropzone from '../dropzone'
-
-import {
-  expenseCreate,
-  expenseUpdate,
-  expenseDelete,
-  expenseInsert,
-} from '../../action/expense-actions.js'
-
-import {
-  categoryUpdate,
-  categoryDelete,
-} from '../../action/category-actions.js'
+import * as categoryActions from '../../action/category-actions.js'
+import * as expenseActions from '../../action/expense-actions.js'
 
 let renderIf = (t, c) => (t ? c : undefined)
 
@@ -37,7 +27,6 @@ class CategoryItem extends React.Component {
     if (err) return console.error(err)
 
     this.props.expenseDelete(expense)
-    console.log('this.props.item in category item', this.props.item)
     expense.categoryId = this.props.item.id
 
     this.props.expenseInsert(expense)
@@ -147,22 +136,22 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, getState) => {
   return {
     expenseCreate: expense => {
-      dispatch(expenseCreate(expense))
+      dispatch(expenseActions.expenseCreateRequest(expense))
     },
     expenseUpdate: expense => {
-      dispatch(expenseUpdate(expense))
+      dispatch(expenseActions.expenseUpdateRequest(expense))
     },
     expenseDelete: expense => {
-      dispatch(expenseDelete(expense))
+      dispatch(expenseActions.expenseDeleteRequest(expense))
     },
     expenseInsert: expense => {
-      dispatch(expenseInsert(expense))
+      dispatch(expenseActions.expenseInsertRequest(expense))
     },
     categoryUpdate: category => {
-      dispatch(categoryUpdate(category))
+      dispatch(categoryActions.categoryUpdateRequest(category))
     },
     categoryDelete: category => {
-      dispatch(categoryDelete(category))
+      dispatch(categoryActions.categoryDeleteRequest(category))
     },
   }
 }

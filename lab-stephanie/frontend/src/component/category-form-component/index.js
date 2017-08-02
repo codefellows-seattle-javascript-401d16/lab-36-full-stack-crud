@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import * as categoryActions from '../../action/category-actions.js'
 
 class CategoryForm extends React.Component {
   constructor(props) {
@@ -47,5 +49,19 @@ class CategoryForm extends React.Component {
     )
   }
 }
+const mapStateToProps = state => {
+  return {
+    categories: state.categories,
+    expenses: state.expenses,
+  }
+}
 
-export default CategoryForm
+let mapDispatchToProps = dispatch => ({
+  categoryCreate: category =>
+    dispatch(categoryActions.categoryCreateRequest(category)),
+  categoryDelete: category =>
+    dispatch(categoryActions.categoryDeleteRequest(category)),
+  categoriesFetch: () => dispatch(categoryActions.categoriesFetchRequest()),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryForm)

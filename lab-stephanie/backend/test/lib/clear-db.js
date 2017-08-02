@@ -1,8 +1,8 @@
 'use strict';
 
-const Album = require('../../model/album.js');
-const Photo = require('../../model/photo.js');
+const Category = require('../../model/category.js');
+const Expense = require('../../model/expense.js');
 
 module.exports = () => {
-  return Promise.all([Album.remove({}), Photo.remove({})]);
+  return Promise.all([Category.remove({}), Expense.remove({})]);
 };

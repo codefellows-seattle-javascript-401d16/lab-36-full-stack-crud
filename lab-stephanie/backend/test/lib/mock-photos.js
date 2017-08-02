@@ -2,46 +2,46 @@
 
 const faker = require('faker');
 
-const mockAlbum = require('./mock-album.js');
-const Photo = require('../../model/photo.js');
+const mockCategory = require('./mock-category.js');
+const Expense = require('../../model/expense.js');
 
-const mockPhoto = (module.exports = {});
+const mockExpense = (module.exports = {});
 
-mockPhoto.createOne = () => {
+mockExpense.createOne = () => {
   let result = {};
-  return mockAlbum
+  return mockCategory
     .createOne()
-    .then(album => {
-      result.album = album;
-      return new Photo({
+    .then(category => {
+      result.category = category;
+      return new Expense({
         name: faker.random.words(1),
         date: Date.now(),
-        album: album._id.toString()
+        category: category._id.toString()
       }).save();
     })
-    .then(photo => {
-      result.photo = photo;
+    .then(expense => {
+      result.expense = expense;
       return result;
     });
 };
 
-mockPhoto.createMany = n => {
+mockExpense.createMany = n => {
   let result = {};
-  return mockAlbum
+  return mockCategory
     .createOne()
-    .then(album => {
-      result.album = album;
-      let photoSavePromises = new Array(n).fill(0).map(() =>
-        new Photo({
+    .then(category => {
+      result.category = category;
+      let expenseSavePromises = new Array(n).fill(0).map(() =>
+        new Expense({
           name: faker.random.words(1),
           date: Date.now(),
-          album: album._id.toString()
+          category: category._id.toString()
         }).save()
       );
-      return Promise.all(photoSavePromises);
+      return Promise.all(expenseSavePromises);
     })
-    .then(photos => {
-      result.photos = photos;
+    .then(expenses => {
+      result.expenses = expenses;
       return result;
     });
 };

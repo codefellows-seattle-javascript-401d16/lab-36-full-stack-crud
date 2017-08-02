@@ -1,5 +1,9 @@
-import { createStore, applyMiddleware } from 'redux'
 import reducer from '../reducer'
+import thunk from './redux-thunk.js'
 import reporter from './reporter.js'
+import { createStore, applyMiddleware } from 'redux'
 
-export default () => createStore(reducer, applyMiddleware(reporter))
+let appStoreCreate = () =>
+  createStore(reducer, applyMiddleware(thunk, reporter))
+
+export default appStoreCreate
