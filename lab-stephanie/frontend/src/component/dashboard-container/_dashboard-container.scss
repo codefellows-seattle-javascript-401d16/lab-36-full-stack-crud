@@ -1,0 +1,20 @@
+@import "../../style/_vars.scss";
+
+.categories {
+  display: inline-block;
+  text-align: left;
+  float: left;
+  width: calc(100%/5);
+  height: 100vh;
+  border: 1px solid black;
+}
+
+.dropzone {
+  height: 100vh;
+  width: 100%;
+  background: $color-primary;
+}
+
+.drop-ready {
+  background: $color-secondary;
+}
