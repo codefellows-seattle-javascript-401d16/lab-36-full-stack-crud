@@ -33,14 +33,14 @@
 * DONE: **src/style/_layout.scss** -- layout styles
 
 #### Feature Tasks
-* TODO: Create a frontend for your lab-14-two-resource-api.
- * TODO: You can also choose to to instead use a comprable REST api that does not have auth (must permit full CRUD)
-* TODO: You are only required to create CRUD opperations for a single resource of your bakend
-* TODO: Use react/redux best practices
-* TODO: Add validation in your redux routers
+* Create a frontend for your lab-14-two-resource-api.
+ * You can also choose to to instead use a comprable REST api that does not have auth (must permit full CRUD)
+* You are only required to create CRUD opperations for a single resource of your bakend
+* Use react/redux best practices
+* DONE: Add validation in your redux routers
 * DONE: Add reporter and thunk middleware to your redux store
-* TODO: make async action creators for making ajax request to your backend
-* TODO: make sync action creators from updating your app store
+* DONE: make async action creators for making ajax request to your backend
+* DONE: make sync action creators from updating your app store
 
 #### Test
 * TODO: Test your redux reducers
@@ -70,18 +70,18 @@ Write a description of the project in your README.md
 ### boilerplate
 * DONE create index.html
 * DONE create main.js
-* DONE create app.js 
-* create main.scss _vars.scss _reset.scss _base.sscs
-* create util.js
+* DONE create app.js
+* DONE create main.scss _vars.scss _reset.scss _base.sscs
+* DONE create util.js
 
 ## add store
-* create blank app reducer
-* create middlware
-* create appStoreCreate
-* add the store to the App component
+* DONE create blank app reducer
+* DONE create middlware
+* DONE create appStoreCreate
+* DONE add the store to the App component
 
 ## add app state logic
-* add reducers for app sate
-* add action creators for you reducers
+* DONE add reducers for app sate
+* DONE add action creators for you reducers
 * add ui for the acttion creators
  repeat

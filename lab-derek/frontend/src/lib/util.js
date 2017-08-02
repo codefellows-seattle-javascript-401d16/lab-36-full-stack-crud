@@ -9,7 +9,7 @@ export const renderIf = (test, component) =>
 
 export const classToggler = (config) =>
   Object.keys(config).filter(key =>
-    config[key].join(' '));
+    config[key]).join(' ');
 
 export const map = (year, ...args) =>
   Array.prototype.map.apply(year, args);

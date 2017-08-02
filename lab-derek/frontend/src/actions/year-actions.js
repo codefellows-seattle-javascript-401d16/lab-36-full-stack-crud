@@ -25,7 +25,7 @@ export const yearDelete = (year) => ({
 export const yearFetchRequest = () => (dispatch) => {
   return superagent.get(`${API_URL}/api/years`)
     .then(res => {
-      dispatch(yearSet(res.body))
+      dispatch(yearSet(res.body));
       return res;
     });
 };
@@ -35,6 +35,15 @@ export const yearCreateRequest = (year) => (dispatch, getState) => {
     .send(year)
     .then(res => {
       dispatch(yearCreate(res.body));
+      return res;
+    });
+};
+
+export const yearUpdateRequest = (year) => (dispatch, getState) => {
+  return superagent.put(`${API_URL}/api/years`)
+    .send(year)
+    .then(res => {
+      dispatch(yearUpdate(res.body));
       return res;
     });
 };
