@@ -4,7 +4,7 @@ import * as util from '../../lib/util.js';
 class YearForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = props.year ? props.year : {name: ''};
+    this.state = props.year ? props.year : {name: '', dayJan1: 'sun', days: []};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -27,8 +27,11 @@ class YearForm extends React.Component {
     }
   }
 
-  handleChange(e){
-    this.setState({name: e.target.value});
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value});
+    if(this.props.year) {
+      this.props.year[e.target.name] = e.target.value;
+    }
   }
 
   render(){
