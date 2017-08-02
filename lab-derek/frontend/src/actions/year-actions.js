@@ -23,7 +23,7 @@ export const yearDelete = (year) => ({
 });
 
 export const yearFetchRequest = () => (dispatch) => {
-  return superagent.get(`${API_URL}/api/years`)
+  return superagent.get(`${__API_URL__}/api/years`)
     .then(res => {
       dispatch(yearSet(res.body));
       return res;
@@ -31,7 +31,7 @@ export const yearFetchRequest = () => (dispatch) => {
 };
 
 export const yearCreateRequest = (year) => (dispatch, getState) => {
-  return superagent.post(`${API_URL}/api/years`)
+  return superagent.post(`${__API_URL__}/api/years`)
     .send(year)
     .then(res => {
       dispatch(yearCreate(res.body));
@@ -40,7 +40,7 @@ export const yearCreateRequest = (year) => (dispatch, getState) => {
 };
 
 export const yearUpdateRequest = (year) => (dispatch, getState) => {
-  return superagent.put(`${API_URL}/api/years`)
+  return superagent.put(`${__API_URL__}/api/years`)
     .send(year)
     .then(res => {
       dispatch(yearUpdate(res.body));
@@ -49,7 +49,7 @@ export const yearUpdateRequest = (year) => (dispatch, getState) => {
 };
 
 export const yearDeleteRequest = (year) => (dispatch) => {
-  return superagent.delete(`${API_URL}/api/lists/${year._id}`)
+  return superagent.delete(`${__API_URL__}/api/lists/${year._id}`)
     .then(res => {
       dispatch(yearDelete(year));
       return res;
