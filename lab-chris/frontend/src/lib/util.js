@@ -9,12 +9,3 @@ export const renderIf = (test, component) =>
 
 export const classToggler = (config) =>
   Object.keys(config).filter(key => config[key]).join(' ')
-
-export const map = (list, ...args) =>
-  Array.prototype.map.apply(list, args)
-
-export const filter = (list, ...args) =>
-  Array.prototype.filter.apply(list, args)
-
-export const reduce = (list, ...args) =>
-  Array.prototype.reduce.apply(list, args)
