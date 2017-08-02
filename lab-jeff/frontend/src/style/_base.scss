@@ -42,6 +42,10 @@ textarea,input {
   margin-bottom: $pad;
 }
 
+input {
+  background-color: #FFF;
+}
+
 // &:focus {
 //   border: 1px solid $color-darkgray;
 // }
