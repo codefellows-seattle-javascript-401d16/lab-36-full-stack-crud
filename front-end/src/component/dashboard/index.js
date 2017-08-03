@@ -1,30 +1,30 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import ListForm from '../list-form'
+import BarForm from '../bar-form'
 import * as util from '../../lib/util.js'
-import * as listActions from '../../action/list-actions.js'
-
+import * as barActions from '../../action/bar-actions.js'
+import BarItem from '../bar-item'
 class Dashboard extends React.Component {
 
   componentWillMount(){
-    this.props.listsFetch()
+    console.log('this.props',this.props);
   }
 
   render(){
     return (
       <div className='dashboard'>
         <h2> dashboard </h2>
-        <ListForm 
-          buttonText='create list'
-          onComplete={this.props.listCreate}
+        <BarForm
+          buttonText='create bar'
+          onComplete={this.props.BarCreate}
           />
-        
-        {this.props.lists.map(list => 
-          <div key={list._id}>
-            {list.title} 
+
+        {this.props.bars.map(bar =>
+          <div key={bar._id}>
+          <BarItem bar={bar}/>
             <button
-              onClick={() => this.props.listDelete(list)}>
-              delete 
+              onClick={() => this.props.barDelete(bar)}>
+              delete
             </button>
           </div>
         )}
@@ -34,16 +34,15 @@ class Dashboard extends React.Component {
   }
 }
 
-let mapStateToProps = (state) => ({lists: state.lists})
+let mapStateToProps = (state) => ({bars: state.bars})
 let mapDispatchToProps = (dispatch) => ({
-  listCreate: (list) => dispatch(listActions.listCreateRequest(list)),
-  listDelete: (list) => dispatch(listActions.listDeleteRequest(list)),
-  listsFetch: () => dispatch(listActions.listsFetchRequest()),
+  BarCreate: (bar) => dispatch(barActions.barCreateRequest(bar)),
+  barDelete: (bar) => dispatch(barActions.barDeleteRequest(bar)),
+  barsFetch: () => dispatch(barActions.barsFetchRequest()),
 })
+
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Dashboard)
-
-

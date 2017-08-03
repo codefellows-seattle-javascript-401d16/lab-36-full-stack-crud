@@ -1,17 +1,17 @@
 import React from 'react'
 import * as util from '../../lib/util.js'
 
-class ListForm extends React.Component {
+class BarForm extends React.Component {
   constructor(props){
     super(props)
-    this.state = props.list ? props.list : {title: ''}
+    this.state = props.bar ? props.bar : {name: ''}
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
 
   componentWillReceiveProps(props){
-    if(props.list)
-      this.setState(props.list)
+    if(props.bar)
+      this.setState(props.bar)
   }
 
   handleSubmit(e){
@@ -22,32 +22,34 @@ class ListForm extends React.Component {
       if(result instanceof Promise){
         result.then(() => this.setState({error: null}))
         .catch(error=> {
-          util.log('ListForm Error:', error)
+          util.log('BarForm Error:', error)
           this.setState({error})
         })
-      } 
+      }
+      if (!this.props.name) {
+        this.setState({name:''})
+      }
   }
 
   handleChange(e){
-    this.setState({title: e.target.value})
+    this.setState({name: e.target.value})
   }
 
   render(){
     return (
-      <form 
+      <form
         onSubmit={this.handleSubmit}
         className={util.classToggler({
-          'list-form': true,
+          'bar-form': true,
           'error': this.state.error,
         })}>
 
-        <input 
-          name='title'
+        <input
+          name='name'
           type='text'
-          placeholder='title'
-          value={this.state.title}
-          onChange={this.handleChange}
-          />
+          placeholder='name'
+          value={this.state.name}
+          onChange={this.handleChange}/>
 
         <button type='submit'> {this.props.buttonText} </button>
       </form>
@@ -55,4 +57,4 @@ class ListForm extends React.Component {
   }
 }
 
-export default ListForm
+export default BarForm
