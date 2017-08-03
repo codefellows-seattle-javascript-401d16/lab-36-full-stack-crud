@@ -27,7 +27,7 @@ class PlaceForm extends React.Component{
     if(result instanceof Promise){
       result.then(() => this.setState({error: null}))
         .catch(error => {
-          util.log('PLcaeForm Error, error');
+          util.log('PlaceForm Error, error');
           this.setState({error});
         });
     }
