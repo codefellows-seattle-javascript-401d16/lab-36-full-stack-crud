@@ -7,12 +7,12 @@ export const placeSet = (places) => ({
 
 export const placeCreate = (places) => ({
   type: 'PLACE_CREATE',
-  payload: place,
+  payload: places,
 });
 
-export const placesFetchRequest = () => (dispatch) => {
+export const placesFetchRequest = (places) => (dispatch) => {
   return superagent.get(`${__API_URL__}/api/lists`)
-    .send(place)
+    .send(places)
     .then(res => {
       dispatch(placeCreate(res.body));
       return res;

@@ -7,7 +7,8 @@ import * as placeAction from '../../action/place-action';
 class Dashboard extends React.Component {
 
   componentWillMount() {
-    this.props.placesFetch();
+    console.log(this.state, 'THIS DOT STATE');
+    this.props.placeFetch();
   }
 
   render(){
