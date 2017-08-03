@@ -20,9 +20,9 @@ class Dashboard extends React.Component {
 
         {this.props.cars.map(car =>
           <div key={car._id}>
-            <p>Car name: {car.name}</p>
-            <p>Captain name: {car.captain}</p>
-            <p>Car type: {car.type}</p>
+            <p>Car make: {car.make}</p>
+            <p>Car model: {car.model}</p>
+            <p>Car year: {car.year}</p>
             <CarForm
               buttonText='update'
               car={car}

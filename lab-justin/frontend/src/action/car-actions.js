@@ -3,29 +3,29 @@ import superagent from 'superagent'
 // sync actions
 // talk to the redux store
 export const carSet = (cars) => ({
-  type: 'SHIP_SET',
+  type: 'CAR_SET',
   payload: cars,
 })
 
 export const carCreate = (car) => ({
-  type: 'SHIP_CREATE',
+  type: 'CAR_CREATE',
   payload: car,
 })
 
 export const carUpdate = (car) => ({
-  type: 'SHIP_UPDATE',
+  type: 'CAR_UPDATE',
   payload: car,
 })
 
 export const carDelete = (car) => ({
-  type: 'SHIP_DELETE',
+  type: 'CAR_DELETE',
   payload: car,
 })
 
 // async actions
 // talk to the API
 export const carsFetchRequest = () => (dispatch) => {
-  return superagent.get(`${__API_URL__}/api/cars`)
+  return superagent.get(`${__API_URL__}/api/cars/`)
   .then(res => {
     dispatch(carSet(res.body))
     return res
@@ -37,6 +37,7 @@ export const carCreateRequest = (car) => (dispatch) => {
   return superagent.post(`${__API_URL__}/api/cars`)
   .send(car)
   .then(res => {
+    console.log('body', res.body)
     dispatch(carCreate(res.body))
     return res
   })
