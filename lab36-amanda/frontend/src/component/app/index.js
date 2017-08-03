@@ -1,21 +1,25 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
-import appStoreCreate from '../../lib/app-store-create.js';
-import Dashboard from '../dashboard';
+import createAppStore from '../../lib/store.js';
+import DashboardContainer from '../dashboard-container';
 
-const store = appStoreCreate();
+const store = createAppStore();
 
-class App extends React.Component{
-  render() {
-    return (
+class App extends React.Component {
+  componentDidMount(){
+    store.subscribe(() => {
+      console.log('__STATE__', store.getState());
+    });
+
+  }
+
+  render(){
+    return(
       <div className='app'>
         <Provider store={store}>
           <BrowserRouter>
-            <main>
-              <h1> App index s</h1>
-              <Route exact path='/' component={Dashboard} />
-            </main>
+            <Route exact path='/' component={DashboardContainer} />
           </BrowserRouter>
         </Provider>
       </div>

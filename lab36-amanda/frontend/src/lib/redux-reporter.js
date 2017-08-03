@@ -1,14 +1,18 @@
-import * as util from './util';
+//imddleware
 
-export default store => next => action => {
-  util.log('__ACTION__', action);
-  try{
+import{log, logError} from './util.js';
+
+let reporter = store => next => action => {
+  log('__ACTION__', action);
+  try {
     let result = next(action);
-    util.log('__STATE__', store.getState());
+    log('__STATE__', store.getState());
     return result;
-  } catch (err){
-    err.action = action;
-    util.logError;
-    return err;
+  } catch(error){
+    error.action = action;
+    logError('__ERROR__', error);
+    return error;
   }
 };
+
+export default reporter;
