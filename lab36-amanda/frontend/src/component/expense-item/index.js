@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import ExpenseForm from '../expense-form';
-import Draggable from '../draggable';
+
+
 import {renderIf} from '../../lib/util.js';
 import {expenseUpdate, expenseDelete} from '../../action/expense-action.js';
 
@@ -24,31 +25,31 @@ class ExpenseItem extends React.Component {
 
     return (
       <li className='expense-item'>
-        <Draggable dataTransferItem={expense}>
-          {renderIf(!this.state.editing,
-            <div onDoubleClick={() => this.setState({editing: true})}>
-              <p> {expense.content} </p>
 
-              <button onClick={() => expenseDelete(expense)}>delete </button>
-            </div>
-          )}
+        {renderIf(!this.state.editing,
+          <div onDoubleClick={() => this.setState({editing: true})}>
+            <p> {expense.content} </p>
 
-          {renderIf(this.state.editing,
-            <div>
-              <ExpenseForm
-                expense={expense}
-                buttonText='update expense'
-                onComplete={expenseUpdate}
-              />
+            <button onClick={() => expenseDelete(expense)}>delete </button>
+          </div>
+        )}
 
-              <button
-                onClick={() => this.setState({editing: false})}>
+        {renderIf(this.state.editing,
+          <div>
+            <ExpenseForm
+              expense={expense}
+              buttonText='update expense'
+              onComplete={expenseUpdate}
+            />
+
+            <button
+              onClick={() => this.setState({editing: false})}>
 
             cancel
-              </button>
-            </div>
-          )}
-        </Draggable>
+            </button>
+          </div>
+        )}
+  
       </li>
     );
   }

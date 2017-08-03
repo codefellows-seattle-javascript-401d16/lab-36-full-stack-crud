@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './_dashboard-container.scss';
+// import './_dashboard-container.scss';
 // scss keeps breaking  my test event wiht the hack
 
 import { categoryCreate, categoryUpdate,categoryDelete}
