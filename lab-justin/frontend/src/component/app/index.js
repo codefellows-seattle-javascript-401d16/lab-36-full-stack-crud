@@ -13,7 +13,7 @@ class App extends React.Component {
         <Provider store={store}>
           <BrowserRouter>
             <main>
-              <h1> Ships a-hoy! </h1>
+              <h1> Cars! </h1>
               <Route exact path='/' component={Dashboard} />
             </main>
           </BrowserRouter>

@@ -4,7 +4,7 @@ import * as util from '../../lib/util.js'
 class CarForm extends React.Component {
   constructor(props){
     super(props)
-    this.state = props.car ? props.car : {name: '', type: '', captain: ''}
+    this.state = props.car ? props.car : {make: '', model: '', year: ''}
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -42,26 +42,26 @@ class CarForm extends React.Component {
         })}>
 
         <input
-          name='name'
+          name='make'
           type='text'
-          placeholder='car name'
-          value={this.state.name}
+          placeholder='car make'
+          value={this.state.make}
           onChange={this.handleChange}
           />
 
         <input
-          name='type'
+          name='model'
           type='text'
-          placeholder='car type'
-          value={this.state.type}
+          placeholder='car model'
+          value={this.state.model}
           onChange={this.handleChange}
           />
 
         <input
-          name='captain'
-          type='text'
-          placeholder='captain name'
-          value={this.state.captain}
+          name='year'
+          type='number'
+          placeholder='car year'
+          value={this.state.year}
           onChange={this.handleChange}
           />
 
