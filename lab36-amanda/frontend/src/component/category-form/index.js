@@ -1,4 +1,5 @@
 import React from 'react';
+import * as util from '../../lib/util.js';
 
 class CategoryForm extends React.Component {
   constructor(props){
@@ -12,6 +13,11 @@ class CategoryForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillReceiveProps(props){
+    if(props.category)
+      this.setState(props.category);
+  }
+
   handleChange(e){
     this.setState({[e.target.name] : e.target.value});
   }
@@ -20,13 +26,25 @@ class CategoryForm extends React.Component {
     e.preventDefault();
     this.props.onComplete(Object.assign({}, this.state));
 
-    if(!this.props.category) //how do I clear this form?
+    if(!this.props.category)
+
       this.setState({name: '', budget: 0 });
+    let result = this.state;
+    if(result instanceof Promise){
+      result.then(() => this.setState({error: null}))
+        .catch(error => {
+          util.log('CategoryForm Error', error);
+        });
+    }
   }
 
   render(){
     return(
-      <form className='cat-form' onSubmit={this.handleSubmit}>
+      <form className='cat-form' onSubmit={this.handleSubmit}
+        className={util.classToggler({
+          'category-form': true,
+          'error': this.state.error,
+        })}>
         <input
           className='cat-form-input'
           name ='name'
