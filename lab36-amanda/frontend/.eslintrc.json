@@ -25,7 +25,6 @@
   },
   "globals": {
     "__API_URI__": false,
-    "__TITLE__": false,
     "__DEBUG__": false
   },
   "extends": [
